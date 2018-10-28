@@ -1,0 +1,16 @@
+package Árboles;
+
+public class Nodo { //Cpmárable es una interfaz
+    int info;
+    Nodo izq, der;
+    
+    public Nodo(int s){
+        info = s;
+        izq=der=null;
+    }
+     public  int compareTo(Object x){
+         return this.info -  ((Nodo)x).info;
+         
+     }
+}
+
