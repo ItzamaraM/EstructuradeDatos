@@ -1,0 +1,19 @@
+package Árboles;
+
+public class Nodoo (int info) {
+    
+Nodo temp = raiz;
+
+while(temp != null){
+if(info == temp.info)
+
+else if(info<temp.info)
+if(tempp.izq != null && temp.izq.info == info )
+if(esHoja(temp.izq));
+temp.izq=null;
+} return;
+temp=temp.izq;
+info(esHoja)
+
+}
+}
