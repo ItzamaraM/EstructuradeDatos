@@ -1,0 +1,113 @@
+package Árboles;
+
+public class Arbol{
+    Nodo raiz;
+    
+    public Arbol(){
+        raiz=null;
+    }
+    Nodo buscar(int info){
+        Nodo temp = raiz;
+        
+        while(temp != null){
+            if(temp.info == info)
+                return temp;
+            else if (temp.info > info)
+                temp = temp.izq;
+            else
+                temp = temp.der;
+        }
+        return null;
+    }
+    
+    Nodo borrar(int info){
+        Nodo temp = raiz;
+        
+        while( temp != null){
+        if(info == temp.info)
+            if(temp.izq != null && temp.izq.info == info)
+                if(esHoja(temp.izq)){
+                    temp.izq=null;
+                }
+                else temp =temp.der;
+        if(temp.der != null && temp.der.info == info)
+            if(esHoja(temp.der)){
+                temp.der=null;
+                return null;
+            }
+        
+        }
+        return null;
+    }
+    
+    boolean Hoja(Nodo nodo){
+        return nodo.izq == null && nodo.der == null;
+    }
+    boolean tieneSóloUnSubárbol(Nodo nodo){
+        return (nodo.izq != null && nodo.der==null) ||
+                (nodo.der != null && nodo.izq == null);
+    }
+    
+    boolean tieneDosSubarboles(Nodo nodo){
+        return nodo.der != null && nodo.izq != null;
+    }
+    public void agregar (int info) {
+        Nodo nuevo = new Nodo(info);
+        
+    if(raiz == null)
+            raiz=nuevo;
+        else{
+            Nodo temp = raiz;
+            while(true)
+            if(nuevo.info==temp.info){
+                System.err.println(info +" ya existe");
+                return;
+            }else if (nuevo.info < temp.info){
+                if(temp.izq != null)
+                    temp = temp.izq;
+                else{
+                    temp.izq=nuevo;
+                    return;
+                }
+                
+    }else{
+    if(temp.der != null)
+                    temp = temp.der;
+                else{
+                    temp.der=nuevo;
+                    return;
+                }
+            }
+        }  
+    }
+
+     public void inorder(Nodo n){
+                                if( n !=null){
+                                    inorder(n.izq);
+                                    System.out.println(n.info + "\t");
+                                    inorder(n.der);
+                                 }
+                            
+                      }
+     public void preorder(Nodo n){
+                                if( n !=null){
+                                    System.out.println(n.info + "\t");
+                                    preorder(n.izq);
+                                    
+                                    preorder(n.der);
+                                 }
+                                System.out.println();
+                            
+                      }
+     public void posorder(Nodo n){
+                                if( n !=null){
+                                    
+                                    posorder(n.izq);
+                                    
+                                    posorder(n.der);
+                                    System.out.println(n.info + "\t");
+                                 }
+                                System.out.println();
+     }
+           }
+
